@@ -61,4 +61,23 @@ if st.session_state.get('prediction', None):
   st.write(st.session_state['prediction'])
   del st.session_state['prediction']
 
+# placeholders only
+open = 152.38
+high = 153.53
+low = 150.91
+volume = 42239517
+adj_close = 153.72
+prev_close = 152.38
+close_change = adj_close / prev_close - 1
+
+# dashboard
+col1, col2, col3 = st.columns(3)
+col1.metric("Open", "${:.2f}".format(open))
+col2.metric("High", "${:.2f}".format(high))
+col3.metric("Low", "${:.2f}".format(low))
+
+col4, col5, col6 = st.columns(3)
+col4.metric("Volume", "{:,}".format(volume))
+col5.metric("Predicted Close", "${:.2f}".format(adj_close), 
+"{0:.2%}".format(close_change))
 
