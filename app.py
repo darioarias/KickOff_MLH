@@ -36,7 +36,7 @@ on the training data and then tested on the testing data. The graph below shows 
 predictions on the testing data. The blue line is the actual closing price of the stock, and 
 the orange line is the predicted closing price of the stock.
 """)
-st.image("images/lstm_predictions.png", use_column_width=True)
+st.image("images/LSTM_predictions.png", use_column_width=True)
 st.markdown("""
 This graph provides us a sense of the model's accuracy. At the moment, the model is able to 
 predict the general trend of the stock's closing prices but overestimates the magnitude of 
@@ -95,8 +95,7 @@ f' {"{0:.2%}".format((prediction/open)-1)} vs Open' if open != 0 else "")
 
 st.header("About Us")
 st.markdown("""
-This app was created by [Dario Arias](https://github.com/darioarias) and [Quan Nguyen]
-(https://github.com/quandollar). We are Fellows in the Open Source Program of the [MLH 
+This app was created by [Dario Arias](https://github.com/darioarias) and [Quan Nguyen](https://github.com/quandollar). We are Fellows in the Open Source Program of the [MLH 
 Fellowship](https://fellowship.mlh.io/). We created this project as part of the fellowship's
 hackathon and to learn more about [BentoML](https://github.com/bentoml/BentoML), a machine
 learning platform for saving and deploying models that we will be working with during our 
