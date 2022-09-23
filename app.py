@@ -84,5 +84,5 @@ col3.metric("Low", "${:.2f}".format(low))
 col4, col5, col6 = st.columns(3)
 col4.metric("Volume", "{:,}".format(volume))
 col5.metric("Predicted Close", "${:.2f}".format(prediction), 
-"{0:.2%}".format((prediction/open)-1) if not open == 0 else 0.0)
+f' {"{0:.2%}".format((prediction/open)-1)} vs Open' if open != 0 else "")
 
