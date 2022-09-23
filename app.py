@@ -92,3 +92,19 @@ col4.metric("Volume", "{:,}".format(volume))
 col5.metric("Predicted Close", "${:.2f}".format(prediction), 
 f' {"{0:.2%}".format((prediction/open)-1)} vs Open' if open != 0 else "")
 
+st.header("About Us")
+st.markdown("""
+This app was created by [Dario Arias](https://github.com/darioarias) and [Quan Nguyen]
+(https://github.com/quandollar). We are Fellows in the Open Source Program of the [MLH 
+Fellowship](https://fellowship.mlh.io/). We created this project as part of the fellowship's
+hackathon and to learn more about [BentoML](https://github.com/bentoml/BentoML), a machine
+learning platform for saving and deploying models that we will be working with during our 
+fellowship.
+
+Dario is...
+
+Quan is a Computer Science grad student in the MCIT program at the University of Pennsylvania. 
+Outside of school and the MLH Fellowship, he works part-time as a finance & analytics 
+manager at Sorare, a fantasy sports NFT platform, and enjoys outdoor activities and being a
+plant dad (with a very black thumb).
+""")
