@@ -72,6 +72,7 @@ if st.session_state.get('prediction', None):
   # st.write(st.session_state['prediction'])
   open, high, low, volume, current_price, prediction =\
     st.session_state['prediction']
+  # print(st.session_state['prediction'])
   del st.session_state['prediction']
 
 
