@@ -8,7 +8,9 @@ st.title("Stock Closing Price Forecast")
 
 st.subheader("The Dataset")
 st.markdown("""
-This app uses a machine learning model to predict today's closing price of a given stock. 
+This app uses a machine learning model to predict today's closing price of a given stock. If
+the market has closed for the day, the model will predict tomorrow's closing price.
+
 The model is trained on historical data of the Microsoft stock (NYSE: MSFT), starting when 
 the company went public in 1986 to March of 2022.
 
@@ -39,6 +41,10 @@ st.markdown("""
 This graph provides us a sense of the model's accuracy. At the moment, the model is able to 
 predict the general trend of the stock's closing prices but overestimates the magnitude of 
 the price changes. We will continue to fine-tune the model in the future.
+
+After the model has been trained, we saved it with BentoML API to its model store (a 
+directory managed by BentoML). The model is then loaded from the model store every time you
+select a stock from the dropdown menu below.
 """)
 
 # Interaction Part
@@ -68,7 +74,7 @@ current_price = 0
 prediction = 0
 
 if st.session_state.get('prediction', None):
-  st.markdown(f'Learn more [{option}](https://finance.yahoo.com/quote/{option})')
+  st.caption(f'For more details, visit [{option}](https://finance.yahoo.com/quote/{option}) on Yahoo Finance.')
   # st.write(st.session_state['prediction'])
   open, high, low, volume, current_price, prediction =\
     st.session_state['prediction']
@@ -85,5 +91,21 @@ col3.metric("Low", "${:.2f}".format(low))
 col4, col5, col6 = st.columns(3)
 col4.metric("Volume", "{:,}".format(volume))
 col5.metric("Predicted Close", "${:.2f}".format(prediction), 
-"{0:.2%}".format((prediction/open)-1) if not open == 0 else 0.0)
+f' {"{0:.2%}".format((prediction/open)-1)} vs Open' if open != 0 else "")
 
+st.header("About Us")
+st.markdown("""
+This app was created by [Dario Arias](https://github.com/darioarias) and [Quan Nguyen]
+(https://github.com/quandollar). We are Fellows in the Open Source Program of the [MLH 
+Fellowship](https://fellowship.mlh.io/). We created this project as part of the fellowship's
+hackathon and to learn more about [BentoML](https://github.com/bentoml/BentoML), a machine
+learning platform for saving and deploying models that we will be working with during our 
+fellowship.
+
+Dario is...
+
+Quan is a Computer Science grad student in the MCIT program at the University of Pennsylvania. 
+Outside of school and the MLH Fellowship, he works part-time as a finance & analytics 
+manager at Sorare, a fantasy sports NFT platform, and enjoys outdoor activities and being a
+plant dad (with a very black thumb).
+""")
