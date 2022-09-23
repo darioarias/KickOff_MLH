@@ -101,7 +101,7 @@ hackathon and to learn more about [BentoML](https://github.com/bentoml/BentoML),
 learning platform for saving and deploying models that we will be working with during our 
 fellowship.
 
-Dario is a Computer Science Senior at the City University of New York, Hunter College . 
+Dario is a Computer Science Senior at the City University of New York, Hunter College. 
 Outside of school and the MLH Fellowship, he works part-time as a sailing instructor at Hudson River Community Sailing, 
 and enjoys outdoor activities.
 
