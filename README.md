@@ -5,7 +5,7 @@
 This app uses a machine learning model to predict today's closing price of a given stock. The model is trained on historical data of the Microsoft stock (NYSE: MSFT), starting when the company went public in 1986 to March of 2022.
 
 Below is a sneak peek of the dataset used to train the model:
-![The dataset](https://github.com/darioarias/KickOff_MLH/tree/main/images/dataset.gif)
+![The dataset](images/dataset.png)
 
 In this dataset, `Open`, `High`, `Low`, and `Close` are the opening, highest, lowest, and
 closing prices of the stock on a given day. `Volume` is the number of shares traded on that
@@ -31,13 +31,11 @@ the price changes. We will continue to fine-tune the model in the future.
 
 ## Predictions
 
-Using `Streamlit`, we created a dashboard interface where you can predict the closing price of select stocks in real-time:
+Using `Streamlit`, we created a dashboard interface where you can predict the closing price of select stocks in real-time.
 
-![The dataset](https://github.com/darioarias/KickOff_MLH/tree/main/images/dashboard.gif)
+[Click here](https://darioarias-kickoff-mlh-app-81gl30.streamlitapp.com/) to try it out!
 
-**TODO: include the link to the Streamlit Cloud app if we can set it up on time. Otherwise, include instructions on how to set up the app locally**
-
-### Side Note: Running this App Locally using MacOS with M1 Chip
+## Side Note: Running this App Locally using MacOS with M1 Chip
 
 1. Clone this repository
 2. Install TensorFlow and the tensorflow-metal PluggableDevice on your machine following [these instructions](https://developer.apple.com/metal/tensorflow-plugin/)
