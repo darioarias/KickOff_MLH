@@ -1,3 +1,4 @@
+""" Lists the stock the app supports. """
 supported_stock = {
   'select': 'Select a Stock',
   'AAPL': "Apple",

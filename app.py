@@ -1,12 +1,14 @@
+# imports
 import streamlit as st
 import pandas as pd
 from dynamic import stock_on_change, supported_stock, stock_name_format
 
+# start of steamlit, title the pafe
 st.title("Stock Closing Price Forecast")
 
-# st.header("About")
-
+# set up headings as well
 st.subheader("The Dataset")
+# first part of the page
 st.markdown("""
 This app uses a machine learning model to predict today's closing price of a given stock. If
 the market has closed for the day, the model will predict tomorrow's closing price.
@@ -16,14 +18,18 @@ the company went public in 1986 to March of 2022.
 
 Below is a sneak peek of the dataset used to train the model:
 """)
+
+# bring in the data to show in the steamlit app
 microsoft_df = pd.read_csv('CSV/MSFT_kaggle.csv', index_col='Date', thousands=',')
 st.write(microsoft_df.tail(100))
+# describe the data
 st.markdown("""
 In this dataset, `Open`, `High`, `Low`, and `Close` are the opening, highest, lowest, and 
 closing prices of the stock on a given day. `Volume` is the number of shares traded on that
 day. `Adj Close` is the closing price adjusted for stock splits and dividends.
 """)
 
+# adding another section
 st.subheader("The Model")
 st.markdown("""
 The model is a Long Short-Term Memory (LSTM) neural network. It is a type of recurrent neural
@@ -36,7 +42,10 @@ on the training data and then tested on the testing data. The graph below shows 
 predictions on the testing data. The blue line is the actual closing price of the stock, and 
 the orange line is the predicted closing price of the stock.
 """)
+
+# showing an image
 st.image("images/LSTM_predictions.png", use_column_width=True)
+# describing an images
 st.markdown("""
 This graph provides us a sense of the model's accuracy. At the moment, the model is able to 
 predict the general trend of the stock's closing prices but overestimates the magnitude of 
@@ -53,6 +62,7 @@ st.markdown(""" In this section you can interact with the model and see predicti
 Select a stock from the dropdown to see the model's prediction for its closing price today.
 """)
 
+# user can pick a stock 
 option = st.selectbox (
   'Which stock would you like to predict today\'s closing price?',
   supported_stock,
@@ -73,6 +83,7 @@ volume = 0
 current_price = 0
 prediction = 0
 
+# update the page when the app detects predictions
 if st.session_state.get('prediction', None):
   st.caption(f'For more details, visit [{option}](https://finance.yahoo.com/quote/{option}) on Yahoo Finance.')
   # st.write(st.session_state['prediction'])
