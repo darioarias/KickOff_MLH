@@ -8,7 +8,9 @@ st.title("Stock Closing Price Forecast")
 
 st.subheader("The Dataset")
 st.markdown("""
-This app uses a machine learning model to predict today's closing price of a given stock. 
+This app uses a machine learning model to predict today's closing price of a given stock. If
+the market has closed for the day, the model will predict tomorrow's closing price.
+
 The model is trained on historical data of the Microsoft stock (NYSE: MSFT), starting when 
 the company went public in 1986 to March of 2022.
 
@@ -39,6 +41,10 @@ st.markdown("""
 This graph provides us a sense of the model's accuracy. At the moment, the model is able to 
 predict the general trend of the stock's closing prices but overestimates the magnitude of 
 the price changes. We will continue to fine-tune the model in the future.
+
+After the model has been trained, we saved it with BentoML API to its model store (a 
+directory managed by BentoML). The model is then loaded from the model store every time you
+select a stock from the dropdown menu below.
 """)
 
 # Interaction Part
