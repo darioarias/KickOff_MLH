@@ -26,14 +26,14 @@ def stock_on_change(state):
   
   prediction = model.predict(normalize(features[:-1]))[0][0]
   
-  features_label.append('prediction')
+  # features_label.append('prediction')
   features.append(float(prediction))
   
-  result = {}
-  for label, val in zip(features_label, features):
-    result[label] = val
+  # result = {}
+  # for label, val in zip(features_label, features):
+  #   result[label] = val
 
-  state['prediction'] = result
+  state['prediction'] = features
 
 def stock_name_format(ticket):
   return supported_stock[ticket]

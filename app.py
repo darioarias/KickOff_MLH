@@ -4,7 +4,7 @@ from dynamic import stock_on_change, supported_stock, stock_name_format
 
 st.title("Stock Closing Price Forecast")
 
-st.header("About")
+# st.header("About")
 
 st.subheader("The Dataset")
 st.markdown("""
@@ -15,7 +15,7 @@ the company went public in 1986 to March of 2022.
 Below is a sneak peek of the dataset used to train the model:
 """)
 microsoft_df = pd.read_csv('CSV/MSFT_kaggle.csv', index_col='Date', thousands=',')
-st.write(microsoft_df.tail(5))
+st.write(microsoft_df.tail(100))
 st.markdown("""
 In this dataset, `Open`, `High`, `Low`, and `Close` are the opening, highest, lowest, and 
 closing prices of the stock on a given day. `Volume` is the number of shares traded on that
@@ -43,7 +43,7 @@ the price changes. We will continue to fine-tune the model in the future.
 
 # Interaction Part
 st.header("Predictions")
-st.markdown("""
+st.markdown(""" In this section you can interact with the model and see prediction realtime.
 Select a stock from the dropdown to see the model's prediction for its closing price today.
 """)
 
@@ -56,19 +56,24 @@ option = st.selectbox (
   format_func=stock_name_format
 )
 
+# placeholders only
+open = 0
+high = 0
+low = 0
+volume = 0
+# adj_close = 0
+# prev_close = 0
+# close_change = 0
+current_price = 0
+prediction = 0
+
 if st.session_state.get('prediction', None):
-  st.write(f'You want to learn about: {option}')
-  st.write(st.session_state['prediction'])
+  st.markdown(f'Learn more [{option}](https://finance.yahoo.com/quote/{option})')
+  # st.write(st.session_state['prediction'])
+  open, high, low, volume, current_price, prediction =\
+    st.session_state['prediction']
   del st.session_state['prediction']
 
-# placeholders only
-open = 152.38
-high = 153.53
-low = 150.91
-volume = 42239517
-adj_close = 153.72
-prev_close = 152.38
-close_change = adj_close / prev_close - 1
 
 # dashboard
 col1, col2, col3 = st.columns(3)
@@ -78,6 +83,6 @@ col3.metric("Low", "${:.2f}".format(low))
 
 col4, col5, col6 = st.columns(3)
 col4.metric("Volume", "{:,}".format(volume))
-col5.metric("Predicted Close", "${:.2f}".format(adj_close), 
-"{0:.2%}".format(close_change))
+col5.metric("Predicted Close", "${:.2f}".format(prediction), 
+"{0:.2%}".format((prediction/open)-1) if not open == 0 else 0.0)
 
