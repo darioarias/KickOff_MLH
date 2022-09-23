@@ -68,7 +68,7 @@ current_price = 0
 prediction = 0
 
 if st.session_state.get('prediction', None):
-  st.markdown(f'Learn more [{option}](https://finance.yahoo.com/quote/{option})')
+  st.caption(f'For more details, visit [{option}](https://finance.yahoo.com/quote/{option}) on Yahoo Finance.')
   # st.write(st.session_state['prediction'])
   open, high, low, volume, current_price, prediction =\
     st.session_state['prediction']
