@@ -1,3 +1,5 @@
+""" Provides support for quering the model """
+
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import numpy as np
@@ -10,6 +12,7 @@ with open("CSV/MSFT_kaggle.csv", mode='r', encoding='utf-8') as data:
   scaler.fit(msft_data[['Open', 'High', 'Low', 'Volume']])
 
 def normalize(point, scaler=scaler):
+  """ Define how to scale values so the model can use them """
   transformed = scaler.transform([point])
   feature_transform = pd.DataFrame(columns=features, data=transformed)
   nparr = np.array(feature_transform)
